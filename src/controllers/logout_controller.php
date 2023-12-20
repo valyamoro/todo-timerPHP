@@ -1,6 +1,4 @@
 <?php
 
-$sessionUser =& $_SESSION['user'];
-
-logout($sessionUser);
+session_destroy();
 header('Location: /');

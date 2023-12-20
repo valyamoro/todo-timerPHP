@@ -46,54 +46,69 @@ return [
         'model' => 'notification',
         'view' => 'auth/notification',
     ],
-    '#^add_post?#' => [
-        'controller' => 'addPost',
-        'model' => 'addPost',
+    '#^add_task?#' => [
+        'controller' => 'addTask',
+        'model' => 'addTask',
         'view' => '',
     ],
-    '#^blog/add_post?#' => [
-        'controller' => 'addPost',
-        'model' => 'addPost',
-        'view' => 'blog/add_post',
+    '#^task/add_task?#' => [
+        'controller' => 'addTask',
+        'model' => 'addTask',
+        'view' => 'task/add_task',
     ],
-    '#^edit_post?#' => [
-        'controller' => 'editPost',
-        'model' => 'editPost',
+    '#^edit_task?#' => [
+        'controller' => 'editTask',
+        'model' => 'editTask',
         'view' => '',
     ],
-    '#^blog/edit_post?#' => [
-        'controller' => 'editPost',
-        'model' => 'editPost',
-        'view' => 'blog/edit_post',
+    '#^task/edit_task?#' => [
+        'controller' => 'editTask',
+        'model' => 'editTask',
+        'view' => 'blog/edit_task',
     ],
-    '#^show_post?#' => [
-        'controller' => 'showPost',
-        'model' => 'showPost',
+    '#^show_task?#' => [
+        'controller' => 'showTask',
+        'model' => 'showTask',
         'view' => '',
     ],
-    '#^blog/show_post?#' => [
-        'controller' => 'showPost',
-        'model' => 'showPost',
-        'view' => 'blog/show_post',
+    '#^task/show_task?#' => [
+        'controller' => 'showTask',
+        'model' => 'showTask',
+        'view' => 'blog/show_task',
     ],
     '#^category_post?#' => [
         'controller' => 'categoryPost',
         'model' => 'categoryPost',
         'view' => '',
     ],
-    '#^blog/category_post?#' => [
+    '#^task/category_post?#' => [
         'controller' => 'categoryPost',
         'model' => 'categoryPost',
         'view' => 'blog/category_post',
     ],
-    '#^remove_post?#' => [
-        'controller' => 'removePost',
-        'model' => 'removePost',
+    '#^remove_task?#' => [
+        'controller' => 'removeTask',
+        'model' => 'removeTask',
         'view' => '',
     ],
     '#^#' => [
-        'controller' => 'index',
-        'model' => 'index',
+        'controller' => 'getTask',
+        'model' => 'getTask',
         'view' => '/index',
     ],
+    '#^get_task?#' => [
+        'controller' => 'getTask',
+        'model' => 'getTask',
+        'view' => '/admin/task',
+    ],
+//    '#^' => [
+//        'controller' => 'task',
+//        'model' => 'task',
+//        'view' => 'admin/task',
+//    ],
+//    '#^#' => [
+//        'controller' => 'index',
+//        'model' => 'index',
+//        'view' => '/index',
+//    ],
 ];

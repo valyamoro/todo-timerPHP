@@ -38,7 +38,7 @@ function quoteData(array $data): array
 
 function getUser(string $email)
 {
-    $query = 'SELECT * FROM users WHERE email=? LIMIT 1';
+    $query = 'SELECT * FROM user WHERE email=? LIMIT 1';
 
     $sth = connectionDB()->prepare($query);
 

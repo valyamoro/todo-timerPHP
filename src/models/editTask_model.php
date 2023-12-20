@@ -36,9 +36,9 @@ function uploadImage(array $dataImage): string
     return $filePath = '/uploads' . $filePath;
 }
 
-function getPostById($idPost)
+function getIdTaskById($idTask)
 {
-    $query = 'SELECT * FROM posts WHERE id_post = ?';
+    $query = 'SELECT * FROM user_task WHERE id_task = ?';
 
     $sth = connectionDB()->prepare($query);
 
