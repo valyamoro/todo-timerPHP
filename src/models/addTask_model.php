@@ -37,34 +37,20 @@ function validatePostImage(array $data): array
 }
 function addPost(array $data): int
 {
-    $query = 'INSERT INTO posts 
-    (category_id, user_id, slug, title, content, image, count_view, is_active, created_at, updated_at)
-    VALUES(:category_id, :user_id, :slug, :title, :content, :image, :count_view, :is_active, :created_at, :updated_at)';
+    $query = 'INSERT INTO task 
+    (name, description, time, created_at, updated_at, priority)
+    VALUES(:name, :description, :time, :created_at, :updated_at, :priority)';
 
     $sth = connectionDB()->prepare($query);
 
     $sth->execute([
-        ':category_id' => $data['category_id'],
-        ':user_id' => $data['user_id'],
-        ':slug' => $data['slug'],
-        ':title' => $data['title'],
-        ':content' => $data['content'],
-        ':image' => $data['image'],
-        ':count_view' => '0',
-        ':is_active' => $data['is_active'],
+        ':name' => $data['name'],
+        ':description' => $data['description'],
+        ':time' => $data['time'],
         ':created_at' => date('Y-m-d H:i:s'),
         ':updated_at' => date('Y-m-d H:i:s'),
+        ':priority' => $data['priority'],
     ]);
 
     return (int) connectionDB()->lastInsertId();
 }
-
-function uploadImage(array $dataImage): string
-{
-    $filePath =  __DIR__ . '\..\..\uploads\\' . uniqid() . $dataImage['image_post']['name'];
-
-    move_uploaded_file($dataImage['image_post']['tmp_name'], $filePath);
-
-    return $filePath = '\..\\' . strstr($filePath, 'uploads');
-}
-

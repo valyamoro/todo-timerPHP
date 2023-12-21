@@ -3,21 +3,18 @@
 $metaTitle = 'Добавить пост';
 
 $dataPost = $_POST;
-$dataImage = $_FILES;
-dump($dataImage);
 
-$msg = validatePost($dataPost);
-$msg = validatePostImage($dataImage);
+//$msg = validatePost($dataPost);
 
-if ($dataPost['add_post'] == 1) {
+if (!empty($dataPost['add_post'])) {
     if (!empty($msg)) {
         $msg = implode(' ', $msg);
         $_SESSION['msg'] = $msg;
     } else {
-        // Приходящее имя категории должно преобразовываться в айди этой категории.
         $dataPost['user_id'] = $_SESSION['user']['id'];
-        $filePath = uploadImage($dataImage);
-        $dataPost['image'] = $filePath;
+        $now = \date('Y-m-d H:i:s');
+        $dataPost['created_at'] = $now;
+        $dataPost['updated_at'] = $now;
         addPost($dataPost);
     }
 }
