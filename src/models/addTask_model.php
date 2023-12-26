@@ -38,8 +38,8 @@ function validatePostImage(array $data): array
 function addPost(array $data): int
 {
     $query = 'INSERT INTO task 
-    (name, description, time, created_at, updated_at, priority)
-    VALUES(:name, :description, :time, :created_at, :updated_at, :priority)';
+    (name, description, time, created_at, updated_at, priority, has)
+    VALUES(:name, :description, :time, :created_at, :updated_at, :priority, :has)';
 
     $sth = connectionDB()->prepare($query);
 
@@ -50,6 +50,7 @@ function addPost(array $data): int
         ':created_at' => date('Y-m-d H:i:s'),
         ':updated_at' => date('Y-m-d H:i:s'),
         ':priority' => $data['priority'],
+        ':has' => 0,
     ]);
 
     return (int) connectionDB()->lastInsertId();
