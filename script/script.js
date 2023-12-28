@@ -13,15 +13,11 @@ function updateWorkTimer(endWorkTime) {
     setTimeout(updateWorkTimer, 1000, endWorkTime);
 }
 
-function updateRestTime(endRestTime) {
-
-}
-
 async function sendNumber(number) {
     let dataToSend = {
         number,
     };
-    delete localStorage.id;
+
     let options = {
         method: 'POST',
         body: JSON.stringify(dataToSend),
@@ -38,26 +34,11 @@ async function sendNumber(number) {
     return currentTime + '|' + result[1];
 }
 
-async function changeHas() {
-    // let formData = new FormData();
-    // formData.append('has', '1');
-    // formData.append('id', localStorage.id);
-    // fetch(location.href, {
-    //     method: 'POST',
-    //     body: formData,
-    // })
-    //
-    //     .then(response => {
-    //         console.log(response);
-    //     })
-    //     .catch(error => {
-    //         console.log('всё не гуд');
-    //     });
-    let id = localStorage.id;
+async function changeHas(id) {
     let dataToSend = {
         id,
     };
-    delete localStorage.id;
+
     let options = {
         method: 'POST',
         body: JSON.stringify(dataToSend),
@@ -69,7 +50,7 @@ async function changeHas() {
     const response = await fetch(location.href, options);
     const data = await response.text();
 
-    // console.log(data);
+    return ('dqwqdw');
 }
 
 let endWorkTime = 0;
@@ -78,12 +59,21 @@ let id = +localStorage.id || 1;
 localStorage.id = id;
 
 let task = await sendNumber(id);
-task = task.split('|');
 
-let has = task[3];
-console.log(has);
-if (+has === 0) {
-    console.log('bibi');
+task = task.split('|');
+task[2] &&= 2;
+// console.log(task);
+console.log(task);
+let has = +task[3];
+if (!task[2]) {
+    console.log('qwdqdwqdw')
+}
+
+console.log('has: ' + has);
+localStorage.id = ++id;
+console.log([localStorage.id]);
+if (has === 0) {
+    // console.log('bibi');
     has = 1;
     if (localStorage.endWorkTime) {
         endTime = Number(localStorage.endWorkTime);
@@ -94,10 +84,10 @@ if (+has === 0) {
 
         updateWorkTimer(endWorkTime);
     }
-    // changeHas().then(r => 'hello');
-} else {
-    console.log('second');
-    localStorage.id = id + 1;
+
+    changeHas(id).then((id) => {
+        console.log(id);
+    }).catch(console.log);
 }
 
 function convert(seconds, time) {

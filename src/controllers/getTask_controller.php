@@ -5,12 +5,11 @@ $metaTitle = 'hello';
 $input = json_decode(file_get_contents("php://input"), true);
 
 
-if ($input['number']) {
-    changeHas($input['number']);
+if ($input['id']) {
+    changeHas($input['id']);
 }
 
 $numberFromJS = $input['number'];
-//var_dump($input, 'www');
 
 $task = \getCurrentTask($numberFromJS);
 
@@ -19,7 +18,6 @@ if (isset($numberFromJS)) {
 } else {
     echo "Переменная 'number' не найдена в данных JS.";
 }
-
 
 $content = render($currentAction['view'], [
     'task' => $task,

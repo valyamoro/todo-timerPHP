@@ -3,7 +3,6 @@ declare(strict_types=1);
 \error_reporting(-1);
 \session_start();
 
-print_r($_SESSION['user']);
 $url = \trim($_SERVER['REQUEST_URI'], '/');
 
 $routes = require __DIR__ . '/config/routes.php';
