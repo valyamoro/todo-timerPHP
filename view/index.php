@@ -9,15 +9,21 @@
 
 <form>
     <button type="button" id="myButton">Нажми меня</button>
+    <button type="button" id="mySecondButton">Обнулить localStorage</button>
 </form>
 
 <script>
    document.getElementById('myButton').addEventListener('click', function () {
        let script = document.createElement('script');
-       script.src = 'script/script.js';
+       script.src = 'script/script.js?' + Date.now();
        script.type = 'module';
        document.head.appendChild(script);
    });
+</script>
+<script>
+    document.getElementById('mySecondButton').addEventListener('click', function () {
+        localStorage.clear();
+    });
 </script>
 </body>
 </html>
